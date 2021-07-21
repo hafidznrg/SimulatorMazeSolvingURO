@@ -21,59 +21,6 @@ Node node13(13, 12, 14, -1, -1, true);
 Node node14(14, -1, -1, -1, 13, false);
 Node node15(15, 1, -1, 11, -1, false);
 
-void robotPindah(Robot* robot, int number){
-    switch (number){
-        case 1:
-            robot->setLocation(node1);
-            break;
-        case 2:
-            robot->setLocation(node2);
-            break;
-        case 3:
-            robot->setLocation(node3);
-            break;
-        case 4:
-            robot->setLocation(node4);
-            break;
-        case 5:
-            robot->setLocation(node5);
-            break;
-        case 6:
-            robot->setLocation(node6);
-            break;
-        case 7:
-            robot->setLocation(node7);
-            break;
-        case 8:
-            robot->setLocation(node8);
-            break;
-        case 9:
-            robot->setLocation(node9);
-            break;
-        case 10:
-            robot->setLocation(node10);
-            break;
-        case 11:
-            robot->setLocation(node11);
-            break;
-        case 12:
-            robot->setLocation(node12);
-            break;
-        case 13:
-            robot->setLocation(node13);
-            break;
-        case 14:
-            robot->setLocation(node14);
-            break;
-        case 15:
-            robot->setLocation(node15);
-            break;
-        
-        default:
-            break;
-    }
-}
-
 int main (){
     int number;
     //char** arena;
@@ -101,7 +48,9 @@ int main (){
 
 
     // Main program
-    robot->BelokKanan(*robot);
+    Arena* arena = new Arena();
+    arena->printArena();
+    robot->BelokKanan();
     // cout << robot->getFrontNode() << endl;
     // Right wall following
     while(1){
@@ -110,7 +59,7 @@ int main (){
             break;
         } else if (robot->getFrontNode() == -1){
             cout << "Belok kiri" << endl;
-            robot->BelokKiri(*robot);
+            robot->BelokKiri();
         } else {
             number = robot->getFrontNode();
             cout << "Pindah ke node " << number << endl;

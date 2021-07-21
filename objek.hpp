@@ -88,8 +88,8 @@ class Robot {
         Robot(string hadap, string left, string kanan);
         ~Robot();
         void setRobot(string hadap, string left, string right);
-        void BelokKanan(Robot &robot);
-        void BelokKiri(Robot &robot);
+        void BelokKanan();
+        void BelokKiri();
         string getFront();
         string getLeft();
         string getRight();
@@ -133,33 +133,33 @@ string Robot::getRight() {
     return this->right;
 }
 
-void Robot::BelokKanan(Robot &robot) {
-    if (robot.getFront() == "south") {
-        robot.setRobot("west", "south", "north");
+void Robot::BelokKanan() {
+    if (this->getFront() == "south") {
+        this->setRobot("west", "south", "north");
     }
-    else if (robot.getFront() == "west") {
-        robot.setRobot("north", "west", "east");
+    else if (this->getFront() == "west") {
+        this->setRobot("north", "west", "east");
     }
-    else if (robot.getFront() == "north") {
-        robot.setRobot("east", "north", "south");
+    else if (this->getFront() == "north") {
+        this->setRobot("east", "north", "south");
     }
-    else if (robot.getFront() == "east") {
-        robot.setRobot("south", "east", "west");
+    else if (this->getFront() == "east") {
+        this->setRobot("south", "east", "west");
     }
 }
 
-void Robot::BelokKiri(Robot &robot) {
-    if (robot.getFront() == "south") {
-        robot.setRobot("east", "north", "south");
+void Robot::BelokKiri() {
+    if (this->getFront() == "south") {
+        this->setRobot("east", "north", "south");
     }
-    else if (robot.getFront() == "west") {
-        robot.setRobot("south", "east", "west");
+    else if (this->getFront() == "west") {
+        this->setRobot("south", "east", "west");
     }
-    else if (robot.getFront() == "north") {
-        robot.setRobot("west", "south", "north");
+    else if (this->getFront() == "north") {
+        this->setRobot("west", "south", "north");
     }
-    else if (robot.getFront() == "east") {
-        robot.setRobot("north", "west", "east");
+    else if (this->getFront() == "east") {
+        this->setRobot("north", "west", "east");
     }
 }
 
