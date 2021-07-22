@@ -31,6 +31,9 @@ int main (){
 
 
     // Main program
+    // 2 -> 1 -> 15 -> 11 -> 12 -> 13 -> 14 (explore room 2)
+    // 14 -> 13 -> 12 -> 11 -> 10 -> 8 -> 9 (explore room 1)
+    // 9 -> 8 -> 10 -> 11 -> 15 -> 1 -> 2 (selesai)
     Arena* arena = new Arena();
     arena->printArena();
     robot->BelokKanan();
@@ -41,29 +44,66 @@ int main (){
             cout << "Ketemu room 2" << endl;
             break;
         } else if (robot->getFrontNode() == -1){
-            cout << "Belok kiri" << endl;
             robot->BelokKiri();
         } else {
             number = robot->getFrontNode();
-            cout << "Pindah ke node " << number << endl;
             robotPindah(robot, number);
         }
     }
+    
+    // Explore room 2
+    robot->BelokKiri();
+    cout << "Masuk ke room 2" << endl;
+    robotPindah(robot, 14);
+    cout << "Explore Room 2" << endl;
+    sleep(3);
+    cout << "Selesai explore room 2" << endl;
+    robot->BelokKiri();
+    robot->BelokKiri();
+    cout << "Keluar dari room 2" << endl;
+    robotPindah(robot, 13);
+    robot->BelokKanan();
+    robotPindah(robot, 12);
 
     // Left wall following
-    // while(1){
-    //     if (robot->getLineDoor()){
-    //         cout << "Ketemu room" << endl;
-    //         break;
-    //     } else if (robot->getFrontNode() == -1){
-    //         cout << "Belok kanan" << endl;
-    //         robot->BelokKanan(*robot);
-    //     } else {
-    //         number = robot->getFrontNode();
-    //         cout << "Pindah ke node " << number << endl;
-    //         robotPindah(robot, number);
-    //     }
-    // }
+    while(1){
+        if (robot->getLocation() == 11){
+            robot->BelokKanan();
+            robotPindah(robot, 10);
+        } else if (robot->getLocation() == 8){
+            cout << "Ketemu room 1" << endl;
+            break;
+        } else {
+            number = robot->getFrontNode();
+            robotPindah(robot, number);
+        }
+    }
     // explore room 1
+    robot->BelokKiri();
+    cout << "Masuk ke room 1" << endl;
+    robotPindah(robot, 9);
+    cout << "Explore Room 1" << endl;
+    sleep(3);
+    cout << "Selesai explore room 1" << endl;
+    robot->BelokKiri();
+    robot->BelokKiri();
+    cout << "Keluar dari room 1" << endl;
+    robotPindah(robot, 8);
+    robot->BelokKanan();
+    robotPindah(robot, 10);
+
+    // Balik ke HOME
+    // Left wall following
+    while(1){
+        if (robot->getLocation() == 2){
+            cout << "Yeee dah balik rumah" << endl;
+            break;
+        } else if (robot->getFrontNode() == -1){
+            robot->BelokKanan();
+        } else {
+            number = robot->getFrontNode();
+            robotPindah(robot, number);
+        }
+    }
     return 0;
 }

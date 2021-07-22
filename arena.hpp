@@ -67,6 +67,8 @@ Node node15(15, 1, -1, 11, -1, false);
 void robotPindah(Robot* robot, int number);
 
 void robotPindah(Robot* robot, int number){
+    sleep(1);
+    cout << "Robot pindah ke node " << number << endl;
     switch (number){
         case 1:
             robot->setLocation(node1);
