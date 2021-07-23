@@ -2,6 +2,7 @@
 #define OBJEK_H
 #include <iostream>
 #include <string>
+#include <unistd.h>
 
 using namespace std;
 
@@ -134,6 +135,8 @@ string Robot::getRight() {
 }
 
 void Robot::BelokKanan() {
+    sleep(1);
+    cout << "Belok kanan" << endl;
     if (this->getFront() == "south") {
         this->setRobot("west", "south", "north");
     }
@@ -149,6 +152,8 @@ void Robot::BelokKanan() {
 }
 
 void Robot::BelokKiri() {
+    sleep(1);
+    cout << "Belok kiri" << endl;
     if (this->getFront() == "south") {
         this->setRobot("east", "north", "south");
     }
