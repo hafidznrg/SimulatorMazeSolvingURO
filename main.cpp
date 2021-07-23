@@ -38,14 +38,15 @@ int main (){
     // Right wall following
     while(1){
         if (robot->getLineDoor()){
-            cout << "Ketemu room 2" << endl;
+            cout << "Robot menemukan room 2" << endl;
+            cout << "Robot berhasil menyelamatkan korban dan memadamkan api" << endl;
             break;
         } else if (robot->getFrontNode() == -1){
-            cout << "Belok kiri" << endl;
+            cout << " Robot belok kiri" << endl;
             robot->BelokKiri();
         } else {
             number = robot->getFrontNode();
-            cout << "Pindah ke node " << number << endl;
+            cout << "Robot pindah ke node " << number << endl;
             robotPindah(robot, number);
         }
     }
