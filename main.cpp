@@ -6,14 +6,6 @@ using namespace std;
 
 int main (){
     int number;
-    //char** arena;
-    //arena = BuatPeta(20);
-    //Node node1(5, 2, false, false, true, false, true, false);
-    //Node node2(17, 7, false, false, true, false, true, false);
-    //PrintPeta(arena, 20, node1);
-    //PrintPeta(arena, 20, node2);
-    //Bikin objek robot pake pointer
-
     Robot* robot = new Robot("south",  "east", "west"); //alokasi memori pointer
     // robot mulai dari node2
     cout << "Lokasi Awal : Node " << robot->getLocation() << endl;
@@ -42,20 +34,11 @@ int main (){
     while(1){
         if (robot->getLineDoor()){
             cout << "Robot menemukan room 2" << endl;
-            cout << "Robot berhasil menyelamatkan korban dan memadamkan api" << endl;
             break;
         } else if (robot->getFrontNode() == -1){
-<<<<<<< HEAD
-            cout << " Robot belok kiri" << endl;
             robot->BelokKiri();
         } else {
             number = robot->getFrontNode();
-            cout << "Robot pindah ke node " << number << endl;
-=======
-            robot->BelokKiri();
-        } else {
-            number = robot->getFrontNode();
->>>>>>> e4250f94431c4939bee9172996f66febadb0cdb0
             robotPindah(robot, number);
         }
     }
@@ -65,6 +48,7 @@ int main (){
     cout << "Masuk ke room 2" << endl;
     robotPindah(robot, 14);
     cout << "Explore Room 2" << endl;
+    cout << "Robot berhasil menyelamatkan korban dan memadamkan api" << endl;
     sleep(3);
     cout << "Selesai explore room 2" << endl;
     robot->BelokKiri();
@@ -92,6 +76,7 @@ int main (){
     cout << "Masuk ke room 1" << endl;
     robotPindah(robot, 9);
     cout << "Explore Room 1" << endl;
+    cout << "Robot berhasil menyelamatkan korban dan memadamkan api" << endl;
     sleep(3);
     cout << "Selesai explore room 1" << endl;
     robot->BelokKiri();
@@ -102,7 +87,7 @@ int main (){
     robotPindah(robot, 10);
 
     // Balik ke HOME
-    // Left wall following
+    // Right wall following
     while(1){
         if (robot->getLocation() == 2){
             cout << "Yeee dah balik rumah" << endl;
