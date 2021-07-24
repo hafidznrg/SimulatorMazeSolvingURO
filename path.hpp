@@ -19,42 +19,30 @@ typedef struct{
 	int block;        //1 petak
 }matrix;
 	matrix way;
-
+	int structblock = way.block;
 void PathForward(){
+	
 	int i,j,x,y;
-	way.block = -1; 
-	way.block++;
-	x = way.num[way.block].i; //baris
-	y = way.num[way.block].j; //kolom
-	way.num[way.block].direction = -1; //
+	structblock = -1; 
+	structblock++;
+	x = way.num[structblock].i; //baris
+	y = way.num[structblock].j; //kolom
+	way.num[structblock].direction = -1; //
 }
-void PathBackward(){
-	int i,j,x,y;
-	way.block = -1; 
-	way.block--;
-	x = way.num[way.block].i; //baris
-	y = way.num[way.block].j; //kolom
-	way.num[way.block].direction = -1; //
-}
-bool path(int map[M][N], int x,int y,int x1,int y1) 
+bool path(int map[M][N],int x,int y,int x1,int y1) 
 {
 	int i,j,dir,locate;
 
 	PathForward();
 	map[x][y]=-1;
-//	PathBackward();
-//	map[x][y]=-1;
 
-	while(way.block>-1)
-	{
-		i = way.num[way.block].i;
-		j = way.num[way.block].j;
-		dir = way.num[way.block].direction; //banyak movement
 
-		if(i == x1 && j == y1)  // pilihan x1 dan y1 ialah 
-		// kalo line room 1 berarti (8,14),(8,15),(8,16),(8,17),(8,18),(8,19),(8,20)
-		// kalo line room 2 berarti (12,6),(13,6),(14,6) 
-		{
+	while(way.block>-1){
+		i = way.num[structblock].i;
+		j = way.num[structblock].j;
+		dir = way.num[structblock].direction; //banyak movement
+
+		if(i == x1 && j == y1){  //koordinat line door
 			cout<<"\n";
 			return true;
 		}locate = 0;
@@ -64,70 +52,41 @@ bool path(int map[M][N], int x,int y,int x1,int y1)
 			dir++;
 			switch(dir)
 			{
-				case 0:
-					i= way.num[way.block].i-1;
-					j= way.num[way.block].j; 
-					break;	
-				case 1:
-					i= way.num[way.block].i;
-					j= way.num[way.block].j+1; 
-					break;
-				case 2:
-					i= way.num[way.block].i+1;
-					j= way.num[way.block].j; 
-					break;
-				case 3:
-					i= way.num[way.block].i;
-					j= way.num[way.block].j-1; 
-					break;
+			case 0:
+				i= way.num[structblock].i-1;
+				j= way.num[structblock].j; 
+				break;	
+			case 1:
+				i= way.num[structblock].i;
+				j= way.num[structblock].j+1; 
+				break;
+			case 2:
+				i= way.num[structblock].i+1;
+				j= way.num[structblock].j; 
+				break;
+			case 3:
+				i= way.num[structblock].i;
+				j= way.num[structblock].j-1; 
+				break;
 			}
 			if(map[M][N]==0){ //melalui jalur array matriks 0
 				locate = 1;
 			} 
 		}
 
-		//while(dir < 3 && locate == 0)
-		//{
-		//	dir--;
-		//	switch(dir)
-		//	{
-// case 0:
-		//			i= way.num[way.block].i-1;
-		//			j= way.num[way.block].j; 
-		//			break;	
-		//		case 1:
-		//			i= way.num[way.block].i;
-		//			j= way.num[way.block].j+1; 
-		//			break;
-		//		case 2:
-		//			i= way.num[way.block].i+1;
-		//			j= way.num[way.block].j; 
-		//			break;
-		//		case 3:
-		//			i= way.num[way.block].i;
-		//			j= way.num[way.block].j-1; 
-		//			break;
-		//	}
-		//	if(map[M][N]==0){
-		//		locate = 1; //melalui jalur matriks 0
-//} 
-	//	}
-		if(locate == 1)
-		{
-			dir = way.num[way.block].direction;
-
+		if(locate == 1){
+			dir = way.num[structblock].direction;
 			way.block++;
-			way.num[way.block].i = i;
-			way.num[way.block].j = j;
-			way.num[way.block].direction = -1;
+			way.num[structblock].i = i;
+			way.num[structblock].j = j;
+			way.num[structblock].direction = -1;
 			map[i][j]= -1;
 		}
-		else
-		{
-			map[way.num[way.block].i][way.num[way.block].j] = 0;
+		else{
+			map[way.num[structblock].i][way.num[structblock].j] = 0; 
 			way.block--;
 		}
-	 } 
-	 return false;
+	} 
+	return false;
 }
 #endif
