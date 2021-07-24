@@ -6,6 +6,12 @@
 
 using namespace std;
 
+typedef enum{
+    south,
+    west,
+    north,
+    east
+} dir;
 
 //Class Node
 //Kurang fungsi mendeteksi node di sekitar
@@ -81,19 +87,19 @@ bool Node::isLineDoor(){
 //Class robot
 class Robot {
     private:
-        string front_side;
-        string left, right;
+        int front_side;
+        int left, right;
         Node location = Node(2, -1, 3, -1, 1, false);
         int x, y;
     public:
-        Robot(string hadap, string left, string kanan);
+        Robot(dir hadap);
         ~Robot();
-        void setRobot(string hadap, string left, string right);
+        void setRobot(dir hadap);
         void BelokKanan();
         void BelokKiri();
-        string getFront();
-        string getLeft();
-        string getRight();
+        int getFront();
+        int getLeft();
+        int getRight();
         void setLoc(int x, int y);
         int getLocation();
         int getFrontNode();
@@ -102,10 +108,10 @@ class Robot {
 };
 
 //Implementasi method kelas Robot
-Robot::Robot(string hadap, string left, string right){
+Robot::Robot(dir hadap){
     this->front_side = hadap;
-    this->left = left;
-    this->right = right;
+    this->left = (hadap+3)%4;
+    this->right = hadap+1;
 }
 //dtor
 Robot::~Robot(){
@@ -116,56 +122,34 @@ void Robot::setLoc(int x, int y){
     this->y = y;
 }
 
-void Robot::setRobot(string hadap, string left, string right) {
+void Robot::setRobot(dir hadap) {
     this->front_side = hadap;
-    this->left = left;
-    this->right = right;
+    this->left = (hadap+3)%4;
+    this->right = hadap+1;
 }
 
-string Robot::getFront() {
+int Robot::getFront() {
     return this->front_side;
 }
 
-string Robot::getLeft() {
+int Robot::getLeft() {
     return this->left;
 }
 
-string Robot::getRight() {
+int Robot::getRight() {
     return this->right;
 }
 
 void Robot::BelokKanan() {
     sleep(1);
     cout << "Belok kanan" << endl;
-    if (this->getFront() == "south") {
-        this->setRobot("west", "south", "north");
-    }
-    else if (this->getFront() == "west") {
-        this->setRobot("north", "west", "east");
-    }
-    else if (this->getFront() == "north") {
-        this->setRobot("east", "north", "south");
-    }
-    else if (this->getFront() == "east") {
-        this->setRobot("south", "east", "west");
-    }
+    this->setRobot((dir)(this->getRight()));
 }
 
 void Robot::BelokKiri() {
     sleep(1);
     cout << "Belok kiri" << endl;
-    if (this->getFront() == "south") {
-        this->setRobot("east", "north", "south");
-    }
-    else if (this->getFront() == "west") {
-        this->setRobot("south", "east", "west");
-    }
-    else if (this->getFront() == "north") {
-        this->setRobot("west", "south", "north");
-    }
-    else if (this->getFront() == "east") {
-        this->setRobot("north", "west", "east");
-    }
+    this->setRobot((dir)(this->getLeft()));
 }
 
 int Robot::getLocation(){
@@ -174,13 +158,13 @@ int Robot::getLocation(){
 
 int Robot::getFrontNode(){
     int nodeDepan;
-    if (this->front_side == "north"){
+    if ((dir)this->front_side == north){
         nodeDepan = this->location.getNorth();
-    } else if (this->front_side == "west"){
+    } else if ((dir)this->front_side == west){
         nodeDepan = this->location.getWest();
-    } else if (this->front_side == "south"){
+    } else if ((dir)this->front_side == south){
         nodeDepan = this->location.getSouth();
-    } else if (this->front_side == "east"){
+    } else if ((dir)this->front_side == east){
         nodeDepan = this->location.getEast();
     }
     

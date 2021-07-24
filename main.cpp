@@ -6,7 +6,7 @@ using namespace std;
 
 int main (){
     int number;
-    Robot* robot = new Robot("south",  "east", "west"); //alokasi memori pointer
+    Robot* robot = new Robot(south); //alokasi memori pointer
     // robot mulai dari node2
     cout << "Lokasi Awal : Node " << robot->getLocation() << endl;
     // Udah punya node depannya, tapi belum tau cara mindah location robotnya
