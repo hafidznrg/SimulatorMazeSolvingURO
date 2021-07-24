@@ -20,8 +20,8 @@ class Node {
         // int x, y;
         int east, west, north, south;
         bool lineDoor;
+        int nama;        
     public:
-        int nama;
         Node(int nama, int north, int east, int south, int west, bool lineDoor);
         ~Node();
         void setNode(int nama, int north, int east, int south, int west, bool lineDoor);
@@ -32,6 +32,7 @@ class Node {
         int getSouth();
         int getEast();
         bool isLineDoor();
+        int getNama();
 };
 
 //Implementasi methode kelas Node
@@ -76,6 +77,9 @@ bool Node::isLineDoor(){
     return this->lineDoor;
 }
 
+int Node::getNama() {
+    return this->nama;
+}
 // int Node::getX() {
 //     return this->x;
 // }
@@ -111,7 +115,7 @@ class Robot {
 Robot::Robot(dir hadap){
     this->front_side = hadap;
     this->left = (hadap+3)%4;
-    this->right = hadap+1;
+    this->right = (hadap+1)%4;
 }
 //dtor
 Robot::~Robot(){
@@ -125,7 +129,7 @@ void Robot::setLoc(int x, int y){
 void Robot::setRobot(dir hadap) {
     this->front_side = hadap;
     this->left = (hadap+3)%4;
-    this->right = hadap+1;
+    this->right = (hadap+1)%4;
 }
 
 int Robot::getFront() {
@@ -153,7 +157,7 @@ void Robot::BelokKiri() {
 }
 
 int Robot::getLocation(){
-    return this->location.nama;
+    return this->location.getNama();
 }
 
 int Robot::getFrontNode(){

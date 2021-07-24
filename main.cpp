@@ -58,7 +58,7 @@ int main (){
     robot->BelokKanan();
     robotPindah(robot, 12);
 
-    // Left wall following
+    // Right wall following
     while(1){
         if (robot->getLocation() == 11){
             robot->BelokKanan();
