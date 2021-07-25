@@ -1,6 +1,7 @@
 #include <iostream>
 #include "arena.hpp"
 #include "objek.hpp"
+#inc
 
 using namespace std;
 
@@ -47,6 +48,7 @@ int main (){
     robot->BelokKiri();
     cout << "Masuk ke room 2" << endl;
     robotPindah(robot, 14);
+    PathtoRoom2();
     cout << "Explore Room 2" << endl;
     cout << "Robot berhasil menyelamatkan korban dan memadamkan api" << endl;
     sleep(3);
@@ -75,6 +77,7 @@ int main (){
     robot->BelokKiri();
     cout << "Masuk ke room 1" << endl;
     robotPindah(robot, 9);
+    PathtoRoom1();
     cout << "Explore Room 1" << endl;
     cout << "Robot berhasil menyelamatkan korban dan memadamkan api" << endl;
     sleep(3);
@@ -99,5 +102,6 @@ int main (){
             robotPindah(robot, number);
         }
     }
+    PathtoHome();
     return 0;
 }
