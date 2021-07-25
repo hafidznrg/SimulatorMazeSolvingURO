@@ -237,8 +237,8 @@ void PathtoHome(){
     path(map,9,10,9,2);
     path(map,9,2,5,2);
     path(map,5,2,1,2);
-    path(map,1,2,1,14); 
-    path(map,1,2,1,14); // titik awal start
+    path(map,1,2,1,14);
+    path(map,1,14,1,14); // titik awal start
 	for(i=0;i<16;i++){
 	 	for(j=0;j<34;j++)
 	 	{
