@@ -21,7 +21,7 @@ typedef struct{
 	matrix way;
 	int structblock = way.block;
 
-void PathStruckBlock(){
+void PathStructBlock(){
 	
 	int i,j,x,y;
 	structblock = -1; 
