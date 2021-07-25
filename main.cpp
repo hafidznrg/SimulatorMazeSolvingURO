@@ -1,7 +1,7 @@
 #include <iostream>
 #include "arena.hpp"
 #include "objek.hpp"
-#inc
+#include "path.hpp"
 
 using namespace std;
 
