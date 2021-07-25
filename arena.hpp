@@ -8,7 +8,6 @@ class Arena{
     Arena(int x, int y);
     ~Arena();
     void printArena();
-    //void exploremaze();
 
     private:
     //Robot robot;
