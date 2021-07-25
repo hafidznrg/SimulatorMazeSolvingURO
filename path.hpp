@@ -1,5 +1,5 @@
-#ifndef PATH.H
-#define PATH.H
+#ifndef PATH_H
+#define PATH_H
 
 #include <iostream>
 using namespace std;
